@@ -41,7 +41,7 @@ class AboutPage extends StatelessWidget {
                   child: SvgPicture.network(
                     'https://raw.githubusercontent.com/ooni/design-system/master/components/svgs/logos/OONI-HorizontalMonochromeInverted.svg',
                     semanticsLabel: 'OONI-HorizontalMonochromeInverted',
-                    placeholderBuilder: (BuildContext context) => Container(color: Colors.red,),
+                    placeholderBuilder: (BuildContext context) => Container(),
                   ),
                 ),
               ),
