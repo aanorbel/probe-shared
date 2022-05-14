@@ -26,6 +26,9 @@ class App extends StatelessWidget {
           ),
         ),
       ),
+      darkTheme: ThemeData(
+        scaffoldBackgroundColor: Colors.black,
+      ),
       initialRoute: '/about',
       routes: {
         '/about': (context) => const AboutPage(),
