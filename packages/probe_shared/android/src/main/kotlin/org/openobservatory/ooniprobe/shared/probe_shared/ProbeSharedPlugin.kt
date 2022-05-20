@@ -40,7 +40,6 @@ class ProbeSharedPlugin: FlutterPlugin, MethodCallHandler {
       }.also { resultingMap ->
         result.success(resultingMap)
       }
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
     } else {
       result.notImplemented()
     }
