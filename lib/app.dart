@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shared/pages/about/about.dart';
+import 'package:shared/pages/home/home.dart';
 
 part 'theme_utils.dart';
 
@@ -16,9 +17,10 @@ class App extends StatelessWidget {
       locale: context.locale,
       theme: _themeData(ThemeMode.light, context),
       darkTheme: _themeData(ThemeMode.dark, context),
-      initialRoute: '/about',
+      initialRoute: '/dashboard',
       routes: {
         '/about': (context) => const AboutPage(),
+        '/dashboard': (context) => const DashboardPage(),
       },
     );
   }
