@@ -11,7 +11,12 @@ public class ProbeSharedPlugin: NSObject, FlutterPlugin {
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
     case "getPlatformVersion":
-      result("macOS " + ProcessInfo.processInfo.operatingSystemVersionString)
+      result([
+        "appName": (Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String) ?? (Bundle.main.infoDictionary?["CFBundleName"] as? String),
+        "packageName":Bundle.main.bundleIdentifier,
+        "version":Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+        "buildNumber":Bundle.main.infoDictionary?["CFBundleVersion"] as? String,
+      ])
     default:
       result(FlutterMethodNotImplemented)
     }

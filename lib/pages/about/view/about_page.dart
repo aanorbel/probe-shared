@@ -25,12 +25,12 @@ class AboutPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            leading: IconButton(
-              onPressed: () async {
-                await SystemNavigator.pop();
-              },
-              icon: const Icon(Icons.arrow_back),
-            ),
+            // leading: IconButton(
+            //   onPressed: () async {
+            //     await SystemNavigator.pop();
+            //   },
+            //   icon: const Icon(Icons.arrow_back),
+            // ),
             expandedHeight: 170.0,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
