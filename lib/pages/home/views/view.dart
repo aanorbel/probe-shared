@@ -1,3 +1,3 @@
 export 'dashboard_page.dart';
-export 'dashboard.dart';
+export 'dashboard/dashboard.dart';
 export 'settings/settings.dart';
