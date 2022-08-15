@@ -4,7 +4,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared/pages/about/about.dart';
+import 'package:shared/pages/home/bloc/run_test_bloc.dart';
 import 'package:shared/pages/home/home.dart';
 
 import "package:ooniengine/abi.pb.dart";
@@ -16,14 +18,14 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 part 'theme_utils.dart';
 
 /// Returns the HOME directory path.
-Future<String> homeDirectory() async{
+Future<String> homeDirectory() async {
   return (await getTemporaryDirectory()).path;
 }
 
 /// Returns the location of the OONI_HOME directory. If [maybeHome]
 /// is not the empty string, we'll use it for computing the OONI_HOME,
 /// otherwise we use $HOME (or %USERPROFILE%) as the base dir.
-Future<String> ooniHome(String maybeHome) async{
+Future<String> ooniHome(String maybeHome) async {
   if (maybeHome == "") {
     maybeHome = await homeDirectory();
   }
@@ -103,7 +105,6 @@ StreamSubscription<ProcessSignal> freeOnSIGINT(Task task) {
   });
 }
 
-
 /// Parses key-value pairs from a list of strings.
 Map<String, String> keyValuePairs(List<String> inputs) {
   var out = Map<String, String>();
@@ -178,6 +179,7 @@ class App extends StatelessWidget {
       engine?.shutdown();
     }
   }
+
   runIm() async {
     final cfg = OONIRunV2MeasureDescriptorConfig(
       maxRuntime: $fixnum.Int64(0),
@@ -239,18 +241,21 @@ class App extends StatelessWidget {
     print("OS: ${_os}");
     // webConnectivity();
     // runIm();
-    return MaterialApp(
-      title: 'OONI Probe',
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: _themeData(ThemeMode.light, context),
-      darkTheme: _themeData(ThemeMode.dark, context),
-      initialRoute: '/dashboard',
-      routes: {
-        '/about': (context) => const AboutPage(),
-        '/dashboard': (context) => const DashboardPage(),
-      },
+    return BlocProvider(
+      create: (context) => RunTestBloc(),
+      child: MaterialApp(
+        title: 'OONI Probe',
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: _themeData(ThemeMode.light, context),
+        darkTheme: _themeData(ThemeMode.dark, context),
+        initialRoute: '/dashboard',
+        routes: {
+          '/about': (context) => const AboutPage(),
+          '/dashboard': (context) => const DashboardPage(),
+        },
+      ),
     );
   }
 }

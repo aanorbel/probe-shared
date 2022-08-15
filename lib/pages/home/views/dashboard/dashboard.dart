@@ -98,16 +98,53 @@ class Dashboard extends StatelessWidget {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(
-                        TestOverViewPage.route(test: tests[index]),
+                        TestOverViewPage.route(descriptor: tests[index]),
                       );
                     },
                     child: Card(
-                      child: ListTile(
-                        leading: Image.asset('assets/images/logo.png'),
-                        title: Text(tests[index].name),
-                        subtitle: Text(tests[index].description),
-                      ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              tests[index].icon,
+                              size: 60,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 10.0),
+                                  child: Text(
+                                    tests[index].name,
+                                    style: Theme.of(context).textTheme.headline6,
+                                  ),
+                                ),
+                                Text(tests[index].description),
+                              ],
+                            ),
+                          ),
+                      ],
                     ),
+                        )
+
+                        // ListTile(
+                        //   leading: ,
+                        //   title: Text(tests[index].name),
+                        //   subtitle: Text(tests[index].description),
+                        // ),
+                        ),
                   ),
                 );
               },

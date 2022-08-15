@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import "package:ooniengine/abi.pb.dart";
 import "package:ooniengine/engine.dart";
 import 'package:easy_localization/easy_localization.dart';
+import 'package:shared/data/models/models.dart';
 
 /// Parses key-value pairs from a list of strings.
 Map<String, String> keyValuePairs(List<String> inputs) {
@@ -18,9 +21,11 @@ Map<String, String> keyValuePairs(List<String> inputs) {
 }
 
 var tests = [
-  OONIRunV2Descriptor(
+  RunDescriptor(
     name: 'Test.Websites.Fullname'.tr(),
     description: 'Dashboard.Websites.Card.Description'.tr(),
+    methodology: 'Dashboard.Websites.Overview.Paragraph'.tr(),
+    icon: MdiIcons.web,
     author: "Simone Basso <simone@openobservatory.org>",
     nettests: [
       OONIRunV2DescriptorNettest(
@@ -31,9 +36,11 @@ var tests = [
       ),
     ],
   ),
-  OONIRunV2Descriptor(
+  RunDescriptor(
     name: 'Test.InstantMessaging.Fullname'.tr(),
     description: 'Dashboard.InstantMessaging.Card.Description'.tr(),
+    methodology: 'Dashboard.InstantMessaging.Overview.Paragraph'.tr(),
+    icon: MdiIcons.message,
     author: "Simone Basso <simone@openobservatory.org>",
     nettests: [
       OONIRunV2DescriptorNettest(
@@ -62,9 +69,11 @@ var tests = [
       ),
     ],
   ),
-  OONIRunV2Descriptor(
+  RunDescriptor(
     name: 'Test.Circumvention.Fullname'.tr(),
     description: 'Dashboard.Circumvention.Card.Description'.tr(),
+    methodology: 'Dashboard.Circumvention.Overview.Paragraph'.tr(),
+    icon: MdiIcons.arrowCollapseHorizontal,
     author: "Simone Basso <simone@openobservatory.org>",
     nettests: [
       OONIRunV2DescriptorNettest(
@@ -87,9 +96,11 @@ var tests = [
       ),
     ],
   ),
-  OONIRunV2Descriptor(
+  RunDescriptor(
     name: 'Test.Performance.Fullname'.tr(),
     description: 'Dashboard.Performance.Card.Description'.tr(),
+    methodology: 'Dashboard.Performance.Overview.Paragraph.Updated'.tr(),
+    icon: MdiIcons.flash,
     author: "Simone Basso <simone@openobservatory.org>",
     nettests: [
       OONIRunV2DescriptorNettest(
@@ -118,9 +129,11 @@ var tests = [
       ),
     ],
   ),
-  OONIRunV2Descriptor(
+  RunDescriptor(
     name: 'Test.Experimental.Fullname'.tr(),
     description: 'Dashboard.Experimental.Card.Description'.tr(),
+    methodology: 'Dashboard.Experimental.Overview.Paragraph'.tr(),
+    icon: MdiIcons.testTube,
     author: "Simone Basso <simone@openobservatory.org>",
     nettests: [
       OONIRunV2DescriptorNettest(
