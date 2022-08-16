@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:probe_shared/data/package_info.dart';
 import 'package:probe_shared/probe_shared.dart';

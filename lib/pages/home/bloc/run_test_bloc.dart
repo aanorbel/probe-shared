@@ -42,9 +42,9 @@ class SessionDirectories {
   /// Generates the directory names and possibly creates them.
   SessionDirectories(String ooniHome) {
     stateDir = filepath.join(ooniHome, "engine");
-    new Directory(stateDir).create(recursive: true);
+    Directory(stateDir).create(recursive: true);
     tunnelDir = filepath.join(ooniHome, "tunnel");
-    new Directory(tunnelDir).create(recursive: true);
+    Directory(tunnelDir).create(recursive: true);
     tempDir = Directory.systemTemp.createTempSync().path;
   }
 }

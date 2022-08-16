@@ -10,7 +10,7 @@ class TestProgressIndicator extends StatelessWidget {
     return BlocBuilder<RunTestBloc, RunTestState>(
       builder: (context, state) {
         if (state.state == TestState.running) {
-          return Container(
+          return SizedBox(
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +31,7 @@ class TestProgressIndicator extends StatelessWidget {
             ),
           );
         }
-        return Container(
+        return const SizedBox(
           width: double.infinity,
           height: 0,
         );
