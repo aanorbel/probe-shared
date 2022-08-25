@@ -54,7 +54,11 @@ Engine newEngine() {
   final goos = operatingSystem();
   final goarch = architecture();
   final ext = libraryExtension();
-  return Engine("libooniengine.${ext}");
+  if (goos =='darwin') {
+      return Engine("${goarch}/libooniengine.${ext}");
+  } else {
+      return Engine("libooniengine.${ext}");
+  }
 }
 
 /// Name of this software
