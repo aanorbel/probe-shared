@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:shared/pages/home/home.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -24,10 +25,10 @@ class _DashboardPageState extends State<DashboardPage> {
     return Scaffold(
       body: PageView(
         controller: _pageViewController,
-        children: <Widget>[
-          const Dashboard(),
-          Container(color: Colors.green),
-          const Settings()
+        children: const <Widget>[
+          Dashboard(),
+          TestResult(),
+          Settings()
         ],
         onPageChanged: (index) {
           setState(() {
@@ -35,28 +36,32 @@ class _DashboardPageState extends State<DashboardPage> {
           });
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _activePage,
-        onTap: (index) {
-          _pageViewController.animateToPage(index,
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.bounceOut);
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Text("R"),
-            activeIcon: Text("Active"),
-            label: "Red",
-          ),
-          BottomNavigationBarItem(
-            icon: Text("G"),
-            activeIcon: Text("Active"),
-            label: "Green",
-          ),
-          BottomNavigationBarItem(
-            icon: Text("B"),
-            activeIcon: Text("Active"),
-            label: "Blue",
+      bottomNavigationBar: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const TestProgressIndicator(),
+          BottomNavigationBar(
+            currentIndex: _activePage,
+            onTap: (index) {
+              _pageViewController.animateToPage(index,
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.bounceOut);
+            },
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.web_sharp),
+                label: "Dashboard",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(MdiIcons.history),
+                label: "Test Results",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(MdiIcons.cogOutline),
+                label: "Settings",
+              ),
+            ],
           ),
         ],
       ),
